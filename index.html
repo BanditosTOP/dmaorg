@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aviso Interno</title>
+  <style>
+    body {
+      background-color: black;
+      color: #ccc;
+      font-family: monospace;
+      white-space: pre-line;
+      padding: 1.5em;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .titulo {
+      color: #aaa;
+      font-weight: bold;
+      margin-bottom: 2em;
+      font-size: 1.1rem;
+    }
+
+    .resaltar {
+      color: #ff4444;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    #videoModal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      padding: 1em;
+    }
+
+    #videoModal video {
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
+      border: 2px solid #444;
+    }
+
+    .glitch-once {
+      position: relative;
+      display: inline-block;
+      color: #ff4444;
+      font-weight: bold;
+      animation: glitchOnce 1s steps(1, end) 3;
+    }
+
+    .glitch-once::before,
+    .glitch-once::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      opacity: 0.8;
+      color: #0ff;
+      z-index: -1;
+    }
+
+    .glitch-once::before {
+      animation: glitchBeforeOnce 1s steps(1, end) 3;
+    }
+
+    .glitch-once::after {
+      color: #f0f;
+      animation: glitchAfterOnce 1s steps(1, end) 3;
+    }
+
+    @keyframes glitchOnce {
+      0% { transform: none; }
+      10% { transform: translate(1px, -1px); }
+      20% { transform: translate(-2px, 2px); }
+      30% { transform: translate(2px, -1px); }
+      100% { transform: none; }
+    }
+
+    @keyframes glitchBeforeOnce {
+      0% { clip-path: inset(0 0 100% 0); }
+      10% { clip-path: inset(0 0 0 0); transform: translate(-1px, -1px); }
+      20% { transform: translate(2px, 2px); }
+      100% { clip-path: inset(0 0 100% 0); transform: none; }
+    }
+
+    @keyframes glitchAfterOnce {
+      0% { clip-path: inset(100% 0 0 0); }
+      10% { clip-path: inset(0 0 0 0); transform: translate(1px, 2px); }
+      20% { transform: translate(-1px, -1px); }
+      100% { clip-path: inset(100% 0 0 0); transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<span class="titulo">
+MUNICIPALIDAD SAGRADA DE DEMA – VIALISTAS UNIDOS  
+CASO N.º 2708252100
+
+EVIDENCIA – AVISO INTERNO
+
+PARA: TODAS LAS UNIDADES DE SEGURIDAD Y DISTRITOS ASIGNADOS
+</span>
+
+<span class="glitch-once" data-text="P">P</span>ERITOS CONFIRMAN UNA BRECHA EN EL DISTRITO DE CONTENCIÓN 6.  
+<span class="glitch-once" data-text="E">E</span>XISTEN PRUEBAS DE QUE OPERATIVOS DISIDENTES VULNERARON LOS SISTEMAS DE VIGILANCIA.  
+<span class="glitch-once" data-text="T">T</span>RES INDIVIDUOS IDENTIFICADOS — ESTADO: <span class="resaltar" onclick="mostrarVideo()">FUGADOS</span>.  
+<span class="glitch-once" data-text="A">A</span>CTUABAN BAJO CONSTANTE VIGILANCIA POR CONDUCTA DESVIADA Y RETÓRICA SEDICIOSA.  
+<span class="glitch-once" data-text="L">L</span>A UBICACIÓN ACTUAL DE LOS PRÓFUGOS ES DESCONOCIDA.  
+<span class="glitch-once" data-text="O">O</span>RDEN INMEDIATA DE RECAPTURA EMITIDA POR EL ALTO CONSEJO.  
+<span class="glitch-once" data-text="S">S</span>E INVESTIGA POSIBLE INFILTRACIÓN EXTERNA COORDINADA.  
+
+<span class="glitch-once" data-text="D">D</span>ESVIACIONES DE LAS ENSEÑANZAS VIALISTAS FUERON HALLADAS EN SUS ESCRITOS.  
+<span class="glitch-once" data-text="E">E</span>L MATERIAL RECUPERADO INDICA DISIDENCIA DELIBERADA.  
+
+<span class="glitch-once" data-text="S">S</span>E APLICARÁN SANCIONES AGRAVADAS ANTE CUALQUIER ENCUBRIMIENTO.  
+<span class="glitch-once" data-text="O">O</span>BEDECER ES PROTECCIÓN.  
+<span class="glitch-once" data-text="L">L</span>A LEALTAD ES SU ÚNICA VOZ.
+
+<div id="videoModal" onclick="cerrarVideo()">
+  <video id="video" controls autoplay playsinline>
+    <source src="escape.mp4" type="video/mp4">
+    Tu navegador no soporta el video.
+  </video>
+</div>
+
+<script>
+  function mostrarVideo() {
+    document.getElementById("videoModal").style.display = "flex";
+    document.getElementById("video").play();
+  }
+
+  function cerrarVideo() {
+    const modal = document.getElementById("videoModal");
+    const video = document.getElementById("video");
+    video.pause();
+    video.currentTime = 0;
+    modal.style.display = "none";
+  }
+</script>
+
+</body>
+</html>
